@@ -1,0 +1,10 @@
+./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=mhretaab/cloudrun
+
+# Maven with Paketo Buildpack
+./mvnw spring-boot:build-image \
+  -Dspring-boot.build-image.imageName=gcr.io/${PROJECT_ID}/helloworld
+
+# Maven with GCP Buildpack
+./mvnw spring-boot:build-image \
+  -Dspring-boot.build-image.imageName=gcr.io/${PROJECT_ID}/helloworld \
+  -Dspring-boot.build-image.builder=gcr.io/buildpacks/builder
