@@ -1,8 +1,5 @@
-FROM openjdk:17-jdk-alpine
-WORKDIR /app
-COPY pom.xml ./
-RUN mvn dependency:go-offline
-COPY . ./
-RUN mvn test && mvn package
-EXPOSE 8080
-CMD ["java", "-jar", "target/myapp.jar"]
+FROM eclipse-temurin:17-jdk-alpine
+VOLUME /tmp
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]

@@ -1,4 +1,4 @@
-package com.example.springcloudrun;
+package com.example.springcloudrun.user;
 
 import com.sun.istack.NotNull;
 
@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NotNull
