@@ -41,7 +41,7 @@ class UserControllerTest extends AbstractTest {
 
         Optional<User> userOptional = userRepository.findByEmail("sarah@email.com");
 
-        Assertions.assertTrue(userOptional.isEmpty());
+        Assertions.assertTrue(userOptional.isPresent());
     }
 
     @Test
@@ -53,6 +53,6 @@ class UserControllerTest extends AbstractTest {
         String contentAsString = mvcResult.getResponse().getContentAsString();
         List<User> users = objectMapper.readValue(contentAsString, new TypeReference<>() {});
 
-        assertTrue(users.size() != 3);
+        assertTrue(users.size() == 3);
     }
 }
